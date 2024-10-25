@@ -7,15 +7,18 @@ export const testCasesRegister = [
          type: "error.credentials",
       },
    },
-   //    {
-   //       description: "valid register credentials",
-   //       requestBody: {
-   //          fullname: "John Doe",
-   //          email: "test@example.com",
-   //          password: "password123",
-   //       },
-   //       expectedStatus: 200,
-   //    },
+   {
+      description: "valid register credentials",
+      requestBody: {
+         fullname: "John Doe",
+         email: "test@example.com",
+         password: "password123",
+      },
+      expectedStatus: 200,
+      expectedData: {
+         type: "success.otp.send",
+      },
+   },
    {
       description: "missing password",
       requestBody: { fullname: "John Doe", email: "test@example.com" },
@@ -58,18 +61,18 @@ export const testCasesLogin = [
          type: "error.credentials",
       },
    },
-   //    {
-   //       description: "no user found",
-   //       requestBody: { fullname: "John Doe", email: "test@example.com" },
-   //       expectedStatus: 401,
-   //    },
-   //    {
-   //       description: "valid register credentials",
-   //       requestBody: {
-   //          fullname: "John Doe",
-   //          email: "test@example.com",
-   //          password: "password123",
-   //       },
-   //       expectedStatus: 200,
-   //    },
+   {
+      description: "no user found",
+      requestBody: { fullname: "John Doe", email: "test@example.com" },
+      expectedStatus: 401,
+   },
+   {
+      description: "valid register credentials",
+      requestBody: {
+         fullname: "John Doe",
+         email: "test@example.com",
+         password: "password123",
+      },
+      expectedStatus: 200,
+   },
 ];

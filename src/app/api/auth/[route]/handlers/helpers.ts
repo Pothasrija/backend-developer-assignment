@@ -9,6 +9,7 @@ export async function addUser(
    // Check if email exists
    const { rows } =
       await sql`SELECT email, email_verified, uuid FROM Users WHERE email = ${email} LIMIT 1;`;
+
    if (rows.length > 0) {
       const user = rows[0];
       if (user.email_verified) {
@@ -16,6 +17,8 @@ export async function addUser(
       } else {
          // Email exists but is not verified - update user info
          const hashedPassword = await bcrypt.hash(password, 10);
+
+         console.log;
          await sql`UPDATE Users SET full_name = ${fullName}, password = ${hashedPassword}, user_signed_time = CURRENT_TIMESTAMP WHERE email = ${email};`;
          return { exist: false, id: user.uuid };
       }

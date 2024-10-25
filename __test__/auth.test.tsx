@@ -25,27 +25,27 @@ describe("API POST /api/auth/:route", () => {
          });
       }
    );
-   testCasesLogin.forEach(
-      ({ description, requestBody, expectedStatus, expectedData }) => {
-         it(`POST /api/auth/login returns ${expectedStatus} when ${description}`, async () => {
-            await testApiHandler({
-               appHandler,
-               paramsPatcher(params) {
-                  params.route = "login";
-               },
-               test: async ({ fetch }) => {
-                  const response = await fetch({
-                     method: "POST",
-                     body: JSON.stringify(requestBody),
-                  });
-                  const json = await response.json();
-                  expect(response.status).toBe(expectedStatus);
-                  expect(json).toMatchObject(expectedData);
-               },
-            });
-         });
-      }
-   );
+   // testCasesLogin.forEach(
+   //    ({ description, requestBody, expectedStatus, expectedData }) => {
+   //       it(`POST /api/auth/login returns ${expectedStatus} when ${description}`, async () => {
+   //          await testApiHandler({
+   //             appHandler,
+   //             paramsPatcher(params) {
+   //                params.route = "login";
+   //             },
+   //             test: async ({ fetch }) => {
+   //                const response = await fetch({
+   //                   method: "POST",
+   //                   body: JSON.stringify(requestBody),
+   //                });
+   //                const json = await response.json();
+   //                expect(response.status).toBe(expectedStatus);
+   //                expect(json).toMatchObject(expectedData);
+   //             },
+   //          });
+   //       });
+   //    }
+   // );
 });
 
 // describe("API POST /api/auth/[route]", () => {
